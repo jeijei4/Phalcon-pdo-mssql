@@ -788,6 +788,10 @@ class MssqlDialect extends \Phalcon\Db\Dialect //implements \Phalcon\Db\DialectI
     public function rollbackSavepoint($name)
     {
     }
+	
+    public function sharedLock($sqlQuery)
+    {
+    }
 
     protected function escaping($item, $escapeChar)
     {
