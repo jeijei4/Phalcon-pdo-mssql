@@ -9,9 +9,9 @@ require('MssqlPdo.class.php');
 try {
     $connection = new MssqlPdo(array(
         'pdoType' => 'ODBC',
-        'driver' => 'ODBC Driver 17 for SQL Server',
+        'driver' => 'ODBC Driver 17 for SQL Server', // Optional - for when 'pdoType' is 'ODBC'
         'host' => '10.15.10.40',
-        'failover' => '10.15.10.42',
+        'failover' => '10.15.10.42', // Optional
         'port' => '1433',
         'username' => 'SomeUser',
         'password' => 'AnonymousPass',
