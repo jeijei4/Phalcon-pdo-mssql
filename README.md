@@ -4,29 +4,30 @@ Connecting to Microsoft SQL Server PDO driver With Phalcon Framework v3 https://
 # Example
 ```
 <?php
-require('MssqlAdapter.class.php');
+require('MssqlPdo.class.php');
 
 try {
-    $connection = new Mssql(array(
-        'pdoType' => 'dblib',
-        'host' => '',
-        'username' => '',
-        'password' => '',
-        'dbname' => '',
-        'port' => '1433'
+    $connection = new MssqlPdo(array(
+        'pdoType' => 'ODBC',
+        'driver' => 'ODBC Driver 17 for SQL Server',
+        'host' => '10.15.10.40',
+        'failover' => '10.15.10.42',
+        'port' => '1433',
+        'username' => 'SomeUser',
+        'password' => 'AnonymousPass',
+        'dbname' => 'TheDB'
     ));
 
-    $result = $connection->query("SELECT @@VERSION");
-    $result->setFetchMode(Phalcon\Db::FETCH_NUM);
-
-    $robots = $result->fetchAll();
-    unset($result);
-    var_dump($robots);
-
+    $arrayResult = $connection->fetchAll("SELECT @@VERSION", Phalcon\Db::FETCH_NUM);
+    var_dump($arrayResult);
+    die();
+} catch (Phalcon\Db\PDOException $e) {
+    echo 'Phalcon PDO error: ' . $e->getMessage(), PHP_EOL;
 } catch (Phalcon\Db\Exception $e) {
     echo 'Phalcon error: ' . $e->getMessage(), PHP_EOL;
 } catch (Exception $e) {
-    echo $e->getMessage(), PHP_EOL;
+    echo 'Error: ' . $e->getMessage(), PHP_EOL;
 }
+
 
 ```
