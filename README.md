@@ -12,12 +12,12 @@ try {
     $connection = new MssqlPdo(array(
         'pdoType' => 'ODBC',
         'driver' => 'ODBC Driver 17 for SQL Server', // Optional - for when 'pdoType' is 'ODBC'
-        'host' => '10.15.10.40',
-        'failover' => '10.15.10.42', // Optional
+        'host' => 'your_server', // update me
+        'failover' => 'your_server_failover', // Optional
         'port' => '1433',
-        'username' => 'SomeUser',
-        'password' => 'AnonymousPass',
-        'dbname' => 'TheDB'
+        'username' => 'your_username', // update me
+        'password' => 'your_password', // update me
+        'dbname' => 'your_database' // update me
     ));
 
     $arrayResult = $connection->fetchAll("SELECT @@VERSION", Phalcon\Db::FETCH_NUM);
