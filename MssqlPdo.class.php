@@ -14,7 +14,13 @@
 use Phalcon\Db\Dialect;
 //use Phalcon\Db\DialectInterface;
 use Phalcon\Db\Column;
-use Phalcon\Db\Adapter\Pdo as AdapterPdo;
+
+/*
+*Adapter: https://github.com/phalcon/cphalcon/blob/v3.4.5/phalcon/db/adapter.zep#L32
+*Pdo extends Adapter: https://github.com/phalcon/cphalcon/blob/v3.4.5/phalcon/db/adapter/pdo.zep#L48
+*/
+use Phalcon\Db\Adapter\Pdo as AdapterPdo; 
+
 use Phalcon\Events\EventsAwareInterface;
 use Phalcon\Db\AdapterInterface;
 
