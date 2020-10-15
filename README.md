@@ -8,6 +8,8 @@ Supports: 'ODBC' - 'DBLIB' - 'SQLSRV'
 <?php
 require('MssqlPdo.class.php');
 
+use Phalcon\Db\Exception;
+
 try {
     $connection = new MssqlPdo(array(
         'pdoType' => 'ODBC',
@@ -23,12 +25,8 @@ try {
     $arrayResult = $connection->fetchAll("SELECT @@VERSION", Phalcon\Db::FETCH_NUM);
     var_dump($arrayResult);
     die();
-} catch (Phalcon\Db\PDOException $e) {
-    echo 'Phalcon PDO error: ' . $e->getMessage(), PHP_EOL;
-} catch (Phalcon\Db\Exception $e) {
-    echo 'Phalcon error: ' . $e->getMessage(), PHP_EOL;
 } catch (Exception $e) {
-    echo 'Error: ' . $e->getMessage(), PHP_EOL;
+    echo 'Error: ' . $e->getMessage() . '. Line:' . $e->getLine() . '. File:' . $e->getFile(), PHP_EOL;
 }
 
 
